@@ -1,7 +1,22 @@
 import styled from "styled-components";
 import logo from "../assets/logo.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Ranking (){
+
+    const [ranking, setRanking] = useState([]);
+
+    useEffect(() => {
+
+        const promise = axios.get("https://danilo-shortly.herokuapp.com/ranking");
+
+        promise.then(response => {
+            setRanking(response.data);
+        });
+        
+    },[]);
+
     return (
         <Container>
             <Logo>
@@ -10,7 +25,7 @@ export default function Ranking (){
             </Logo>
             <RankingContainer>🏆 Ranking</RankingContainer>
             <RankingItems>
-
+                {ranking.map((item, index) => <h3>{index + 1}. {item.name} - {item.linksCount} links - {item.visitCount} visualizações</h3>)}
             </RankingItems>
             <p>Crie sua conta para usar nosso serviço!</p>
         </Container>
@@ -22,7 +37,14 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    p {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 45px;
+        color: #000000;
+    }
 `;
+
 const Logo = styled.div`
     display: flex;
     align-items: center;
@@ -36,7 +58,7 @@ const Logo = styled.div`
 `;
 
 const RankingContainer = styled.div`
-    margin-top: 75px;
+    margin-top: 50px;
     font-weight: 700;
     font-size: 36px;
     line-height: 45px;
@@ -44,6 +66,7 @@ const RankingContainer = styled.div`
 `;
 
 const RankingItems = styled.div`
+    overflow-y: scroll;
     padding: 20px;
     margin-top: 60px;
     background: #FFFFFF;
@@ -52,4 +75,10 @@ const RankingItems = styled.div`
     border-radius: 24px 24px 0px 0px;
     width: calc(100% - 100px);
     height: 250px;
+    h3 {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        color: #000000;
+    }
 `;
