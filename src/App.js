@@ -5,6 +5,7 @@ import Header from "./Header/Header.js";
 import Ranking from "./Ranking/Ranking.js";
 import Register from "./Register/Register.js";
 import Login from "./Login/Login.js";
+import Home from "./Home/Home.js";
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Ranking />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/signin" element={<Login />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </UserContext.Provider>
 	</BrowserRouter>

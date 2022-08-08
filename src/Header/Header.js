@@ -55,7 +55,7 @@ export default function Header() {
             </div> 
             :
             <div>
-                <h3>
+                <h3 onClick={()=> navigate("/home")}>
                     Home
                 </h3>
                 <h3 onClick={()=> navigate("/")}>
