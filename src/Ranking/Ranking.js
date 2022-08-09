@@ -25,7 +25,7 @@ export default function Ranking (){
             </Logo>
             <RankingContainer>🏆 Ranking</RankingContainer>
             <RankingItems>
-                {ranking.map((item, index) => <h3>{index + 1}. {item.name} - {item.linksCount} links - {item.visitCount} visualizações</h3>)}
+                {ranking.map((item, index) => <h3 key={index}>{index + 1}. {item.name} - {item.linksCount} links - {item.visitCount} visualizações</h3>)}
             </RankingItems>
             <p>Crie sua conta para usar nosso serviço!</p>
         </Container>
